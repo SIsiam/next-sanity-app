@@ -44,11 +44,11 @@ export default function oneRecipe({ data, preview }) {
         return <h1>Loading...</h1>
 
     }
-    // const { data: racipe } = usePreviewSubscription(recipiesQuery, {
-    //     params: { slug: data.racipe?.slug.current },
-    //     initialData: data,
-    //     enabled: preview,
-    // })
+    const { data: racipe } = usePreviewSubscription(recipiesQuery, {
+        params: { slug: data.racipe?.slug.current },
+        initialData: data,
+        enabled: preview,
+    })
 
     // console.log(data.racipe.name);
     const [like, setLikes] = useState(data.racipe?.likes);
@@ -62,14 +62,14 @@ export default function oneRecipe({ data, preview }) {
         const data = await res.json();
         setLikes(data.likes)
     }
-    const { racipe } = data;
+    // const { racipe } = data;
 
 
     return (
         <div>
             <div className="">
-                <h1> {racipe.name} </h1>
-                <img src={urlFor(racipe.mainImage).url()} height="100%" width="100%" alt="ds" />
+                <h1> {data.racipe.name} </h1>
+                <img src={urlFor(data.racipe.mainImage).url()} height="100%" width="100%" alt="ds" />
             </div>
             <div className="">
                 <ul>
@@ -86,7 +86,7 @@ export default function oneRecipe({ data, preview }) {
 
                         </li>
                     ))}
-                    <PortableText blocks={racipe?.instruction} />
+                    <PortableText blocks={data.racipe?.instruction} />
                 </ul>
             </div>
 
