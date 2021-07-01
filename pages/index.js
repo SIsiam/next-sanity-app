@@ -28,6 +28,7 @@ export default function Home({ recipes }) {
             <div>
               <h2>{r.name}</h2>
               {/* <Image src={urlFor(r.mainImage).url()} alt="done"            / > */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={urlFor(r.mainImage).url()} height="300px" width="300px" alt="ds" />
               {/* <img src={r.mainImage.asset._ref} height="300px" width="300px" alt="" /> */}
             </div>

@@ -34,13 +34,15 @@ import { useState } from "react";
 export default function oneRecipe({ data, preview }) {
 
   
-    const { data: racipe } = usePreviewSubscription(recipiesQuery, {
-        params: { slug: data.racipe?.slug.current },
-        initialData: data,
-        enabled: preview,
-    })
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    // const { data: racipe } = usePreviewSubscription(recipiesQuery, {
+    //     params: { slug: data.racipe?.slug.current },
+    //     initialData: data,
+    //     enabled: preview,
+    // })
 
     // console.log(data.racipe.name);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [like, setLikes] = useState(data.racipe?.likes);
     console.log(data.racipe?.likes);
 
@@ -52,14 +54,15 @@ export default function oneRecipe({ data, preview }) {
         const data = await res.json();
         setLikes(data.likes)
     }
-    // const { racipe } = data;
+    const { racipe } = data;
 
 
     return (
         <div>
             <div className="">
-                <h1> {data.racipe.name} </h1>
-                <img src={urlFor(data.racipe.mainImage).url()} height="100%" width="100%" alt="ds" />
+                <h1> {racipe.name} </h1>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={urlFor(racipe.mainImage).url()} height="100%" width="100%" alt="ds" />
             </div>
             <div className="">
                 <ul>
